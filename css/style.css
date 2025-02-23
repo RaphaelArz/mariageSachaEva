@@ -1,247 +1,183 @@
-/*! HTML5 Boilerplate v9.0.1 | MIT License | https://html5boilerplate.com/ */
-
-/* main.css 3.0.0 | MIT License | https://github.com/h5bp/main.css#readme */
-/*
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
-
-/* ==========================================================================
-   Base styles: opinionated defaults
-   ========================================================================== */
-
-html {
-  color: #222;
-  font-size: 1em;
-  line-height: 1.4;
-}
-
-/*
- * Remove text-shadow in selection highlight:
- * https://twitter.com/miketaylr/status/12228805301
- *
- * Customize the background color to match your design.
- */
-
-::-moz-selection {
-  background: #b3d4fc;
-  text-shadow: none;
-}
-
-::selection {
-  background: #b3d4fc;
-  text-shadow: none;
-}
-
-/*
- * A better looking default horizontal rule
- */
-
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
-}
-
-/*
- * Remove the gap between audio, canvas, iframes,
- * images, videos and the bottom of their containers:
- * https://github.com/h5bp/html5-boilerplate/issues/440
- */
-
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
-  vertical-align: middle;
-}
-
-/*
- * Remove default fieldset styles.
- */
-
-fieldset {
-  border: 0;
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Assouline', sans-serif;
+  color: #333;
+  text-align: center;
+  overflow-x: hidden;
+}
+#overlay {
+  background-image: url("/img/evaSacha1.jpg");
+  background-size: cover;
+  background-position: top;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fffaf4; /* Semi-transparent black background */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Aligne le contenu en bas */
+  align-items: center;
+  opacity: 1; /* Initially visible */
+  transition: opacity 0.5s; /* Smooth transition for opacity change */
+  z-index: 2000; /* Assurez-vous que z-index est inférieur à celui de l'overlay */
+  padding-bottom: 30px; /* Un peu d'espace entre le bas de l'écran et le contenu */
 }
 
-/*
- * Allow only vertical resizing of textareas.
- */
-
-textarea {
-  resize: vertical;
+#overlay.hidden {
+  opacity: 0; /* Make overlay invisible */
+  pointer-events: none; /* Disable pointer events on the hidden overlay */
 }
 
-/* ==========================================================================
-   Author's custom styles
-   ========================================================================== */
-
-/* ==========================================================================
-   Helper classes
-   ========================================================================== */
-
-/*
- * Hide visually and from screen readers
- */
-
-.hidden,
-[hidden] {
-  display: none !important;
+#decompte {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;  /* Espace uniforme entre les éléments */
+  margin-bottom: 20px; /* Espace entre le décompte et le bouton */
+  height: 20vh; /* Taille ajustée */
 }
 
-/*
- * Hide only visually, but have it available for screen readers:
- * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
- *
- * 1. For long content, line feeds are not interpreted as spaces and small width
- *    causes content to wrap 1 word per line:
- *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
- */
+.elementDecompte {
+  width: 75px; /* Largeur ajustée pour être plus ronde */
+  height: 120px; /* Hauteur plus grande pour allonger */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40%; /* Arrondi des coins */
+  border-bottom: 2px solid #ffffff; /* Contour bas solide */
+  border-right: 2px solid #ffffff; /* Contour droit solide */
+}
 
-.visually-hidden {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
+.texteDecompte {
+  font-family: Assouline, sans-serif;
+  font-size: 1rem;
+  color: #ffffff; /* Couleur de texte plus claire */
+  margin-top: 8px; /* Espace entre le chiffre et le texte */
+}
+
+.chiffreDecompte {
+  color: #ffffff; /* Couleur du texte des chiffres */
+  font-family: Assouline, sans-serif;
+  font-size: 2rem; /* Plus grand pour améliorer la visibilité */
+  font-weight: bold; /* Mettre en évidence les chiffres */
+}
+
+#divOverlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#firstImg{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+}
+
+.button-style {
+  font-size: 1.2rem;
+  color: #000000; /* Texte noir par défaut */
+  text-decoration: none;
+  margin-top: 10px;
+  padding: 10px 20px; /* Ajoute un peu de padding pour donner de la taille au bouton */
+  border: 2px solid #ffffff; /* Bordure blanche */
+  border-radius: 20px; /* Bordure arrondie */
+  background-color: #ffffff; /* Fond blanc */
+  transition: all 0.3s ease; /* Transition fluide pour les changements */
+}
+
+.button-style:hover {
+  color: #ffffff; /* Texte blanc au survol */
+  background-color: transparent; /* Fond transparent au survol */
+  border-color: #ffffff; /* Bordure blanche au survol */
+}
+
+.button-style:active {
+  color: #ffffff; /* Texte blanc lors du clic */
+  background-color: transparent; /* Fond transparent lors du clic */
+  border-color: #ffffff; /* Bordure blanche lors du clic */
+}
+
+.button-style .fas {
+  margin-right: 10px; /* Espacement entre l'icône et le texte */
+}
+
+
+
+.black {
+  width: 100%;
+  height: 200px;
+  background: black;
+}
+
+/* Conteneur principal */
+.e-with-fixed-bg {
+  position: relative;
+  width: 100%;
+  height: 50vh; /* Hauteur de l'écran */
+}
+
+/* Conteneur du fond parallax */
+.bg-wrap {
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: end;
   position: absolute;
-  white-space: nowrap;
-  width: 1px;
-  /* 1 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip: rect(0, auto, auto, 0);
 }
 
-/*
- * Extends the .visually-hidden class to allow the element
- * to be focusable when navigated to via the keyboard:
- * https://www.drupal.org/node/897638
- */
-
-.visually-hidden.focusable:active,
-.visually-hidden.focusable:focus {
-  clip: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  position: static;
-  white-space: inherit;
-  width: auto;
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
-/*
- * Hide visually and from screen readers, but maintain layout
- */
-
-.invisible {
-  visibility: hidden;
+/* Conteneur de contenu */
+.e-container {
+  position: relative;
+  z-index: 1;
+  color: white;
+  background: transparent;
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: end;
 }
 
-/*
- * Clearfix: contain floats
- *
- * The use of `table` rather than `block` is only necessary if using
- * `::before` to contain the top-margins of child elements.
- */
-
-.clearfix::before,
-.clearfix::after {
-  content: "";
-  display: table;
+.section {
+  position: relative;
+  padding: 100px 20px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
 }
 
-.clearfix::after {
-  clear: both;
+.text-box {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
-
-/* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
-   ========================================================================== */
-
-@media only screen and (min-width: 35em) {
-  /* Style adjustments for viewports that meet the condition */
-}
-
-@media print,
-  (-webkit-min-device-pixel-ratio: 1.25),
-  (min-resolution: 1.25dppx),
-  (min-resolution: 120dpi) {
-  /* Style adjustments for high resolution devices */
-}
-
-/* ==========================================================================
-   Print styles.
-   Inlined to avoid the additional HTTP request:
-   https://www.phpied.com/delay-loading-your-print-css/
-   ========================================================================== */
-
-@media print {
-  *,
-  *::before,
-  *::after {
-    background: #fff !important;
-    color: #000 !important;
-    /* Black prints faster */
-    box-shadow: none !important;
-    text-shadow: none !important;
-  }
-
-  a,
-  a:visited {
-    text-decoration: underline;
-  }
-
-  a[href]::after {
-    content: " (" attr(href) ")";
-  }
-
-  abbr[title]::after {
-    content: " (" attr(title) ")";
-  }
-
-  /*
-   * Don't show links that are fragment identifiers,
-   * or use the `javascript:` pseudo protocol
-   */
-  a[href^="#"]::after,
-  a[href^="javascript:"]::after {
-    content: "";
-  }
-
-  pre {
-    white-space: pre-wrap !important;
-  }
-
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid;
-  }
-
-  tr,
-  img {
-    page-break-inside: avoid;
-  }
-
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
-  }
-
-  h2,
-  h3 {
-    page-break-after: avoid;
-  }
-}
-
