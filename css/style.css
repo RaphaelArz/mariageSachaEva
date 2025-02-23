@@ -43,13 +43,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1.5rem;  /* Espace uniforme entre les éléments */
+  gap: 1rem;  /* Espace uniforme entre les éléments */
   margin-bottom: 20px; /* Espace entre le décompte et le bouton */
   height: 20vh; /* Taille ajustée */
 }
 
 .elementDecompte {
-  width: 85px; /* Largeur ajustée pour être plus ronde */
+  width: 75px; /* Largeur ajustée pour être plus ronde */
   height: 120px; /* Hauteur plus grande pour allonger */
   display: flex;
   flex-direction: column;
@@ -59,14 +59,13 @@ body {
   border-bottom: 2px solid #ffffff; /* Contour bas solide */
   border-right: 3px solid #ffffff; /* Contour droit solide */
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Ombre noire subtile */
-  padding: 35px;
 
 
 }
 
 .texteDecompte {
   font-family: Assouline, sans-serif;
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: #ffffff; /* Couleur de texte plus claire */
   margin-top: 8px; /* Espace entre le chiffre et le texte */
 }
@@ -74,7 +73,7 @@ body {
 .chiffreDecompte {
   color: #ffffff; /* Couleur du texte des chiffres */
   font-family: Assouline, sans-serif;
-  font-size: 1.5rem; /* Plus grand pour améliorer la visibilité */
+  font-size: 1.3rem; /* Plus grand pour améliorer la visibilité */
   font-weight: bold; /* Mettre en évidence les chiffres */
 }
 
