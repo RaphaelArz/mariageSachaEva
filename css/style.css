@@ -3,6 +3,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
 body {
   font-family: 'Assouline', sans-serif;
   color: #333;
@@ -44,15 +49,19 @@ body {
 }
 
 .elementDecompte {
-  width: 75px; /* Largeur ajustée pour être plus ronde */
+  width: 85px; /* Largeur ajustée pour être plus ronde */
   height: 120px; /* Hauteur plus grande pour allonger */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 40%; /* Arrondi des coins */
+  border-radius: 48%; /* Arrondi des coins */
   border-bottom: 2px solid #ffffff; /* Contour bas solide */
-  border-right: 2px solid #ffffff; /* Contour droit solide */
+  border-right: 3px solid #ffffff; /* Contour droit solide */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Ombre noire subtile */
+  padding: 35px;
+
+
 }
 
 .texteDecompte {
@@ -65,7 +74,7 @@ body {
 .chiffreDecompte {
   color: #ffffff; /* Couleur du texte des chiffres */
   font-family: Assouline, sans-serif;
-  font-size: 2rem; /* Plus grand pour améliorer la visibilité */
+  font-size: 1.5rem; /* Plus grand pour améliorer la visibilité */
   font-weight: bold; /* Mettre en évidence les chiffres */
 }
 
@@ -82,15 +91,24 @@ body {
   align-items: flex-end;
 
 }
+.firstImgContenaire{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  font-size: 7vh;
+  margin-bottom: 30px;
+}
 
 .button-style {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #000000; /* Texte noir par défaut */
   text-decoration: none;
   margin-top: 10px;
   padding: 10px 20px; /* Ajoute un peu de padding pour donner de la taille au bouton */
   border: 2px solid #ffffff; /* Bordure blanche */
-  border-radius: 20px; /* Bordure arrondie */
+  border-radius: 5px; /* Bordure arrondie */
   background-color: #ffffff; /* Fond blanc */
   transition: all 0.3s ease; /* Transition fluide pour les changements */
 }
