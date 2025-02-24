@@ -19,6 +19,15 @@ a{
   color: white;
   text-decoration: none;
 }
+.fade-in-image {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-in-image.visible {
+  opacity: 1;
+}
+
 
 #overlay {
   background-image: url("/img/evaSacha5.jpg");
@@ -141,11 +150,12 @@ a{
 }
 .overlay-eye {
   position: absolute;
-   /* Déplace l'image de l'œil vers la droite, au-delà de la div image */
-  top: 0%; /* Positionne l'image à 50% de la hauteur de la section */
-  transform: translateY(-50%); /* Centrer verticalement l'image */
-  z-index: 2; /* Assure que l'image est devant les autres éléments */
+  bottom:-70px; /* Positionne l'image au bas du conteneur */
+  left: 0; /* Positionne l'image à gauche du conteneur */
+  transform: translateX(0); /* Aucune transformation horizontale nécessaire */
+  z-index: 2; /* Assure que l'image est au-dessus des autres éléments */
 }
+
 
 .overlay-flower {
   position: absolute;
