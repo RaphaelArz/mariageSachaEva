@@ -1,0 +1,200 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+body {
+  font-family: 'Assouline', sans-serif;
+  color: #333;
+  text-align: center;
+  overflow-x: hidden;
+}
+#overlay {
+  background-image: url("/img/evaSacha1.jpg");
+  background-size: cover;
+  background-position: top;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fffaf4; /* Semi-transparent black background */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Aligne le contenu en bas */
+  align-items: center;
+  opacity: 1; /* Initially visible */
+  transition: opacity 0.5s; /* Smooth transition for opacity change */
+  z-index: 2000; /* Assurez-vous que z-index est inférieur à celui de l'overlay */
+  padding-bottom: 30px; /* Un peu d'espace entre le bas de l'écran et le contenu */
+}
+
+#overlay.hidden {
+  opacity: 0; /* Make overlay invisible */
+  pointer-events: none; /* Disable pointer events on the hidden overlay */
+}
+
+#decompte {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;  /* Espace uniforme entre les éléments */
+  margin-bottom: 20px; /* Espace entre le décompte et le bouton */
+  height: 20vh; /* Taille ajustée */
+}
+
+.elementDecompte {
+  width: 75px; /* Largeur ajustée pour être plus ronde */
+  height: 120px; /* Hauteur plus grande pour allonger */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 48%; /* Arrondi des coins */
+  border-bottom: 2px solid #ffffff; /* Contour bas solide */
+  border-right: 3px solid #ffffff; /* Contour droit solide */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Ombre noire subtile */
+
+
+}
+
+.texteDecompte {
+  font-family: Assouline, sans-serif;
+  font-size: 0.8rem;
+  color: #ffffff; /* Couleur de texte plus claire */
+  margin-top: 8px; /* Espace entre le chiffre et le texte */
+}
+
+.chiffreDecompte {
+  color: #ffffff; /* Couleur du texte des chiffres */
+  font-family: Assouline, sans-serif;
+  font-size: 1.3rem; /* Plus grand pour améliorer la visibilité */
+  font-weight: bold; /* Mettre en évidence les chiffres */
+}
+
+#divOverlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#firstImg{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+}
+.firstImgContenaire{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  font-size: 7vh;
+  margin-bottom: 30px;
+}
+
+.button-style {
+  font-size: 1rem;
+  color: #000000; /* Texte noir par défaut */
+  text-decoration: none;
+  margin-top: 10px;
+  padding: 10px 20px; /* Ajoute un peu de padding pour donner de la taille au bouton */
+  border: 2px solid #ffffff; /* Bordure blanche */
+  border-radius: 5px; /* Bordure arrondie */
+  background-color: #ffffff; /* Fond blanc */
+  transition: all 0.3s ease; /* Transition fluide pour les changements */
+}
+
+.button-style:hover {
+  color: #ffffff; /* Texte blanc au survol */
+  background-color: transparent; /* Fond transparent au survol */
+  border-color: #ffffff; /* Bordure blanche au survol */
+}
+
+.button-style:active {
+  color: #ffffff; /* Texte blanc lors du clic */
+  background-color: transparent; /* Fond transparent lors du clic */
+  border-color: #ffffff; /* Bordure blanche lors du clic */
+}
+
+.button-style .fas {
+  margin-right: 10px; /* Espacement entre l'icône et le texte */
+}
+
+
+
+.black {
+  width: 100%;
+  height: 200px;
+  background: black;
+}
+
+/* Conteneur principal */
+.e-with-fixed-bg {
+  position: relative;
+  width: 100%;
+  height: 50vh; /* Hauteur de l'écran */
+}
+
+/* Conteneur du fond parallax */
+.bg-wrap {
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: end;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip: rect(0, auto, auto, 0);
+}
+
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Conteneur de contenu */
+.e-container {
+  position: relative;
+  z-index: 1;
+  color: white;
+  background: transparent;
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: end;
+}
+
+.section {
+  position: relative;
+  padding: 100px 20px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+
+.text-box {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
