@@ -117,6 +117,7 @@ a{
 
 .text-section {
   background-image: url('/img/backgroundPapierpeint.jpg');
+  position: relative; /* Nécessaire pour que l'image soit positionnée par rapport à cette section */
   background-size: cover;
   background-position: center;
   display: flex;
@@ -169,11 +170,4 @@ a{
   height: 80vh; /* Ajuste la hauteur de la section image */
   background-size: cover;
   background-position: center;
-}
-
-.text-section {
-  position: relative; /* Nécessaire pour que l'image soit positionnée par rapport à cette section */
-  padding-left: 50px;  /* Crée un espace à gauche pour que l'œil ne recouvre pas tout le texte */
-  background-color: rgba(255, 255, 255, 0.8); /* Fond semi-transparent pour mieux voir le texte */
-  height: 80vh; /* Ajuste la hauteur de la section texte */
 }
