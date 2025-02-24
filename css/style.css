@@ -15,6 +15,10 @@ body {
   text-align: center;
   overflow-x: hidden;
 }
+a{
+  color: white;
+  text-decoration: none;
+}
 
 #overlay {
   background-image: url("/img/evaSacha5.jpg");
