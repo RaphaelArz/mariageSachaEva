@@ -10,16 +10,15 @@
 }
 
 body {
-  font-family: 'Cormorant', sans-serif;
+  font-family: 'Assouline', sans-serif;
   color: #333;
   text-align: center;
   overflow-x: hidden;
 }
 h1{
-  font-family: pinyon, sans-serif;
-  font-size: 50px;
-  margin-bottom: 1rem;
-  font-weight: 400;
+  font-family: Cormorant, sans-serif;
+  font-size: 35px;
+  margin-bottom: 2rem;
 }
 
 a{
@@ -71,8 +70,8 @@ a{
 }
 
 .elementDecompte {
-  width: 80px;
-  height: 80px;
+  width: 75px;
+  height: 75px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -84,15 +83,14 @@ a{
 }
 
 .texteDecompte {
-  font-size: 1.1rem;
-  font-weight: bold;
+  font-size: 0.8rem;
   color: #ffffff;
   margin-top: 8px;
 }
 
 .chiffreDecompte {
   color: #ffffff;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: bold;
 }
 
@@ -115,30 +113,25 @@ a{
 }
 
 .button-style {
-  font-size: 1.15rem;
+  font-size: 1rem;
   color: #000000;
   text-decoration: none;
   margin-top: 10px;
   padding: 10px 20px;
-  border: 1px solid #000000;
+  border: 2px solid #ffffff;
   border-radius: 5px;
-  background-color: #e7dbcb;
-  transition: all 0.4s ease;
-  font-family: Cormorant, sans-serif;
-  display: inline-block; /* Permet au scale de bien s'appliquer */
+  background-color: #ffffff;
+  transition: all 0.3s ease;
 }
 
 .button-style:hover {
-  color: #000000;
-  background-color: white;
-  border-color: #000000;
-  transform: scale(1.05); /* Augmente de 10% */
+  color: #ffffff;
+  background-color: transparent;
+  border-color: #ffffff;
 }
 
-
-
 .text-section {
-  background-image: url('/img/fleurTaupe.jpg');
+  background-image: url('/img/backgroundPapierpeint.jpg');
   position: relative; /* Nécessaire pour que l'image soit positionnée par rapport à cette section */
   background-size: cover;
   background-position: center;
@@ -147,9 +140,7 @@ a{
   align-items: center;
   text-align: center;
   height: auto;
-  padding-left: 20px;
-  padding-right: 20px;
-
+  padding: 20px;
 }
 
 .text-container {
@@ -158,8 +149,9 @@ a{
   color: #333;
   font-size: 3rem;
   font-family: 'Assouline', sans-serif;
-  padding: 30px;
-  background: rgba(255, 255, 255, 0.67); /* Fond semi-transparent */
+  padding: 20px;
+  border: 4px solid #333333; /* Ajout d'un cadre blanc */
+  background: rgba(255, 255, 255, 0.3); /* Fond semi-transparent */
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 .overlay-eye {
@@ -197,24 +189,19 @@ a{
 }
 
 
-.texteGros{
-  font-family: 'pinyon', serif;
-  font-size: 35px;
+.cormorandGras{
+  font-family: 'Cormorant', serif;
+  font-size: 30px;
   color: #333333;
-  font-weight: 300;
-
+  font-weight: bolder;
 }
 
-.texte{
-  font-family: 'cormorand', serif;
-  font-size: 19px;
+.cormorand{
+  font-family: 'Cormorant', serif;
+  font-size: 22px;
   color: #333333;
-  font-style: italic;
-  font-weight: lighter;
 }
-br {
-  display: block;
-  content: "";
-  margin: 25px 0; /* Réduit l'espacement vertical */
-}
+.mairie{
+  line-height: 2; /* Augmente l'espacement entre les lignes */
 
+}
