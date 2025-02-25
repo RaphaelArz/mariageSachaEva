@@ -131,7 +131,7 @@ a{
 }
 
 .text-section {
-  background-image: url('/img/backgroundPapierpeint.jpg');
+  background-image: url('/img/fleurTaupe.jpg');
   position: relative; /* Nécessaire pour que l'image soit positionnée par rapport à cette section */
   background-size: cover;
   background-position: center;
@@ -140,7 +140,9 @@ a{
   align-items: center;
   text-align: center;
   height: auto;
-  padding: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+
 }
 
 .text-container {
@@ -150,8 +152,7 @@ a{
   font-size: 3rem;
   font-family: 'Assouline', sans-serif;
   padding: 20px;
-  border: 4px solid #333333; /* Ajout d'un cadre blanc */
-  background: rgba(255, 255, 255, 0.3); /* Fond semi-transparent */
+  background: rgba(255, 255, 255, 0.67); /* Fond semi-transparent */
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 .overlay-eye {
