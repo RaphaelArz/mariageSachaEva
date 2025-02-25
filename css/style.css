@@ -218,3 +218,24 @@ br {
   margin: 25px 0; /* Réduit l'espacement vertical */
 }
 
+
+.famille-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px auto;
+  max-width: 600px;
+
+  font-family: 'cormorand', serif;
+  font-size: 14px;
+  color: #333333;
+  font-style: italic;
+  font-weight: lighter;
+}
+
+.famille-mariee{
+  text-align: left;
+
+}
+.famille-marie{
+  text-align: right;
+}
