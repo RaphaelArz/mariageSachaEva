@@ -123,19 +123,18 @@ a{
   border: 1px solid #000000;
   border-radius: 5px;
   background-color: #e7dbcb;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
   font-family: Cormorant, sans-serif;
+  display: inline-block; /* Permet au scale de bien s'appliquer */
 }
 
 .button-style:hover {
   color: #000000;
   background-color: white;
   border-color: #000000;
+  transform: scale(1.05); /* Augmente de 10% */
 }
 
-.button-style:active {
-  transform: scale(1.1); /* Agrandit légèrement au clic */
-}
 
 
 .text-section {
