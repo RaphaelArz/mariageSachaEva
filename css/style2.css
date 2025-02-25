@@ -10,7 +10,7 @@
 }
 
 body {
-  font-family: 'Assouline', sans-serif;
+  font-family: 'Cormorant', sans-serif;
   color: #333;
   text-align: center;
   overflow-x: hidden;
@@ -18,7 +18,7 @@ body {
 h1{
   font-family: pinyon, sans-serif;
   font-size: 50px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   font-weight: 400;
 }
 
@@ -71,8 +71,8 @@ a{
 }
 
 .elementDecompte {
-  width: 75px;
-  height: 75px;
+  width: 80px;
+  height: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -84,14 +84,15 @@ a{
 }
 
 .texteDecompte {
-  font-size: 0.8rem;
+  font-size: 1.1rem;
+  font-weight: bold;
   color: #ffffff;
   margin-top: 8px;
 }
 
 .chiffreDecompte {
   color: #ffffff;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: bold;
 }
 
@@ -131,6 +132,11 @@ a{
   background-color: white;
   border-color: #000000;
 }
+
+.button-style:active {
+  transform: scale(1.1); /* Agrandit légèrement au clic */
+}
+
 
 .text-section {
   background-image: url('/img/fleurTaupe.jpg');
