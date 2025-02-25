@@ -19,6 +19,7 @@ h1{
   font-family: pinyon, sans-serif;
   font-size: 40px;
   margin-bottom: 2rem;
+  font-weight: lighter;
 }
 
 a{
@@ -113,7 +114,7 @@ a{
 }
 
 .button-style {
-  font-size: 1rem;
+  font-size: 1.15rem;
   color: #000000;
   text-decoration: none;
   margin-top: 10px;
@@ -195,6 +196,8 @@ a{
   font-family: 'pinyon', serif;
   font-size: 40px;
   color: #333333;
+  font-weight: lighter;
+
 }
 
 .texte{
@@ -207,6 +210,6 @@ a{
 br {
   display: block;
   content: "";
-  margin: 20px 0; /* Réduit l'espacement vertical */
+  margin: 23px 0; /* Réduit l'espacement vertical */
 }
 
