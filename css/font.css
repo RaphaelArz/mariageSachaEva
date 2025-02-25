@@ -10,3 +10,10 @@
   font-weight: normal;
   src:  url('/font/CormorantGaramond-Regular.ttf') format('truetype');
 }
+
+@font-face {
+  font-family: 'pinyon';
+  font-style: normal;
+  font-weight: normal;
+  src:  url('/font/PinyonScript.ttf') format('truetype');
+}

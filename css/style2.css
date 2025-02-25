@@ -16,8 +16,8 @@ body {
   overflow-x: hidden;
 }
 h1{
-  font-family: Cormorant, sans-serif;
-  font-size: 35px;
+  font-family: pinyon, sans-serif;
+  font-size: 40px;
   margin-bottom: 2rem;
 }
 
@@ -120,14 +120,15 @@ a{
   padding: 10px 20px;
   border: 2px solid #ffffff;
   border-radius: 5px;
-  background-color: #ffffff;
+  background-color: #e7dbcb;
   transition: all 0.3s ease;
+  font-family: Cormorant, sans-serif;
 }
 
 .button-style:hover {
-  color: #ffffff;
+  color: #000000;
   background-color: transparent;
-  border-color: #ffffff;
+  border-color: #e5d9c9;
 }
 
 .text-section {
@@ -190,19 +191,22 @@ a{
 }
 
 
-.cormorandGras{
-  font-family: 'Cormorant', serif;
-  font-size: 30px;
-  color: #333333;
-  font-weight: bolder;
-}
-
-.cormorand{
-  font-family: 'Cormorant', serif;
-  font-size: 22px;
+.texteGros{
+  font-family: 'pinyon', serif;
+  font-size: 40px;
   color: #333333;
 }
-.mairie{
-  line-height: 2; /* Augmente l'espacement entre les lignes */
 
+.texte{
+  font-family: 'cormorand', serif;
+  font-size: 20px;
+  color: #333333;
+  font-style: italic;
+  font-weight: lighter;
 }
+br {
+  display: block;
+  content: "";
+  margin: 20px 0; /* Réduit l'espacement vertical */
+}
+
