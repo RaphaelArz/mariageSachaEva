@@ -243,3 +243,18 @@ br {
 .kolSassone{
   width: 99%;
 }
+.hebreu{
+  font-family: david, sans-serif;
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+  justify-content: center;
+  align-items: center;
+  font-size: 23px;
+  font-weight: bolder;
+  width: 50%;
+  margin-inline: auto;
+}
+.prenom{
+  line-height: 0.8;
+}

@@ -17,3 +17,11 @@
   font-weight: normal;
   src:  url('/font/PinyonScript.ttf') format('truetype');
 }
+
+@font-face {
+  font-family: 'david';
+  font-style: normal;
+  font-weight: normal;
+  src:  url('/font/DavidLibre-Regular.ttf') format('truetype');
+}
+
