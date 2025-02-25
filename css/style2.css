@@ -118,7 +118,7 @@ a{
   text-decoration: none;
   margin-top: 10px;
   padding: 10px 20px;
-  border: 2px solid #ffffff;
+  border: 1px solid #000000;
   border-radius: 5px;
   background-color: #e7dbcb;
   transition: all 0.3s ease;
