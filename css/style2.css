@@ -128,8 +128,8 @@ a{
 
 .button-style:hover {
   color: #000000;
-  background-color: transparent;
-  border-color: #e5d9c9;
+  background-color: white;
+  border-color: #000000;
 }
 
 .text-section {
@@ -194,7 +194,7 @@ a{
 
 .texteGros{
   font-family: 'pinyon', serif;
-  font-size: 40px;
+  font-size: 35px;
   color: #333333;
   font-weight: lighter;
 
@@ -210,6 +210,6 @@ a{
 br {
   display: block;
   content: "";
-  margin: 23px 0; /* Réduit l'espacement vertical */
+  margin: 25px 0; /* Réduit l'espacement vertical */
 }
 
