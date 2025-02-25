@@ -140,7 +140,7 @@ a{
 .text-section {
   background-image: url('/img/fleurTaupe.jpg');
   position: relative; /* Nécessaire pour que l'image soit positionnée par rapport à cette section */
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   display: flex;
   justify-content: center;
