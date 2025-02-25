@@ -244,7 +244,7 @@ br {
   width: 99%;
 }
 .hebreu{
-  font-family: david, sans-serif;
+  font-family: hebreu, sans-serif;
   display: flex;
   flex-direction: row;
   gap: 100px;
