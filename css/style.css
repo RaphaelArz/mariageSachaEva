@@ -259,3 +259,33 @@ br {
 .prenom{
   line-height: 0.8;
 }
+
+
+
+.fade-in-visible {
+  animation: fadeIn 1s ease-in forwards; /* Animation applied when element is in view */
+}
+
+.fade-in {
+  opacity: 0; /* Elements are initially invisible */
+  transition: opacity 0s ease-in; /* Optional: smooth transition for visibility change */
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
