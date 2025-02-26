@@ -1,5 +1,5 @@
 function playMusic() {
-  var audio = document.getElementById("myAudio");
+  const audio = document.getElementById("myAudio");
   audio.currentTime = 1
   audio.play();
 }
