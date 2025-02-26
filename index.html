@@ -30,7 +30,7 @@
         <a class="texteDecompte">Secondes</a>
       </div>
     </div>
-    <a class="button-style" onclick="hideOverlay()">
+    <a class="button-style" onclick="hideOverlay(); playMusic()">
       <i class="fas fa-arrow-right"></i>
       Voir l'invitation
     </a>
@@ -192,12 +192,16 @@
   </section>
 </div>
 
+<audio id="myAudio" src="/music/saraPercheTiAmo.mp3"></audio>
+
 
 <script src="js/hideOverlay.js"></script>
 <script src="js/countDown.js"></script>
 <script src="js/scroll.js"></script>
 <script src="js/apparitionImage.js"></script>
 <script src="js/apparitionTexte.js"></script>
+<script src="js/music.js"></script>
+
 
 
 
