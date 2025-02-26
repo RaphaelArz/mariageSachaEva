@@ -20,7 +20,7 @@ h1{
   font-size: 50px;
   margin-bottom: 1rem;
   font-weight: 400;
-  color: #38226d;
+  color: #efb2c1;
 }
 
 a{
@@ -123,7 +123,7 @@ a{
   padding: 10px 20px;
   border: 1px solid #ffffff;
   border-radius: 5px;
-  background-color: #38226d;
+  background-color: #efb2c1;
   transition: all 0.4s ease;
   font-family: Cormorant, sans-serif;
   display: inline-block; /* Permet au scale de bien s'appliquer */
@@ -202,7 +202,7 @@ a{
 .texteGros{
   font-family: 'pinyon', serif;
   font-size: 35px;
-  color: #38226d;
+  color: #efb2c1;
   font-weight: 300;
 
 }
@@ -256,6 +256,7 @@ br {
   font-weight: bolder;
   width: 50%;
   margin-inline: auto;
+  color: #efb2c1;
 }
 .prenom{
   line-height: 0.8;
