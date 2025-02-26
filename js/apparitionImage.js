@@ -8,7 +8,7 @@ const observer = new IntersectionObserver(entries => {
       observer.unobserve(entry.target); // Arrête d'observer l'image après qu'elle soit apparue
     }
   });
-}, { threshold: 0.2 }); // Seuil de visibilité de 50%
+}, { threshold: 0.05 }); // Seuil de visibilité de 50%
 
 images.forEach(image => {
   observer.observe(image); // Observer chaque image

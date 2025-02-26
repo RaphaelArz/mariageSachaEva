@@ -1,5 +1,5 @@
 // Date et heure du mariage (année, mois - 1, jour, heure, minute, seconde)
-var weddingDate = new Date(2025, 3, 3, 8, 30, 0); // Exemple : 16 février 2025 à 15h00
+var weddingDate = new Date(2025, 7, 28, 15, 30, 0); // Exemple : 16 février 2025 à 15h00
 
 // Fonction pour mettre à jour le compteur
 function updateCountdown() {
