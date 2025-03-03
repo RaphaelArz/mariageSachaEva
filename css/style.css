@@ -238,10 +238,13 @@ br {
 
 .famille-mariee{
   text-align: left;
+  max-width: 50%;
 
 }
 .famille-marie{
   text-align: right;
+  max-width: 50%;
+
 }
 
 .kolSassone{
@@ -296,11 +299,13 @@ br {
 
 .nomInvite {
   font-style: oblique;
-  color: #efb2c1;
+  color: #ffffff;
   font-family: Cormorant, sans-serif;
-  font-size: 35px;
+  font-size: 30px;
   font-weight: bold;
-  text-shadow: 2px 2px 4px black; /* Ombre douce noire */
+  text-shadow: 0px 0px 5px black,
+  0px 0px 10px black,
+  0px 0px 15px black;
 }
 
 
@@ -314,6 +319,7 @@ br {
   min-height: 100vh;
   padding: 0 15px 0 15px;
   background-image: url('/img/fleurTaupe.jpg');
+  background-size: contain;
 }
 
 /* Conteneur du formulaire */
