@@ -452,3 +452,9 @@ br {
 }
 
 
+hr{
+  color: #efb2c1;
+  background-color: #efb2c1;
+  height: 2px;
+  border: none;
+}
