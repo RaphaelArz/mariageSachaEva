@@ -330,7 +330,6 @@ br {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   padding: 0 15px 0 15px;
   background-image: url('/img/fleurTaupe.jpg');
   background-size: contain;
