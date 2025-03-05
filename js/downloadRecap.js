@@ -3,7 +3,7 @@ function downloadImage() {
   const pathname = window.location.pathname;
 
   // Associer des images spécifiques à chaque page
-  let imageUrl = "/img/recapSachaEva.png"; // Image par défaut
+  let imageUrl = "/img/recapSachaEva1.png"; // Image par défaut
 
   if (pathname.includes("index.html")) {
     imageUrl = "/img/recapSachaEva1.png";
