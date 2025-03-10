@@ -54,8 +54,10 @@
   </div>
   <div id="divOverlay">
 
-
   </div>
+
+
+
 
   <div>
     <h1 class="nomInvite"><span id="nom-invite"></span></h1>
@@ -104,11 +106,12 @@
       <h1>La Mairie</h1>
       <img src="img/iconFleur.png" width="150">
       <p class="texteGros"><strong> Eva & Sacha</strong></p> <br>
-      <p class="texteGros" style="font-size: 30px">un <strong>Oui</strong> pour un <strong>Nom</strong>.</p> <br>
+      <p class="texteGros" style="font-size: 35px"><strong>un Oui pour un <strong>Nom</strong>.</strong></p> <br>
       <p class="texte fade-in"><strong>Le Jeudi 28 août 2025</strong></p>
       <p class="texte fade-in"><strong>à 15h30 précises</strong></p><br>
       <p class="texte fade-in">Mairie de Charenton-le-Pont </p>
       <p class="texte fade-in">48 rue de Paris, 94220</p> <br>
+      <a class="texte" onclick="addEvent('mairieAgenda')"> <strong>Ajoutez à l'agenda</strong> </a><br>
       <a class="button-style"
          href="https://ul.waze.com/ul?place=ChIJbXy3i_ty5kcRFfs6RuVuRks&ll=48.81971640%2C2.41609580&navigate=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location">
         <i class="fa-brands fa-waze"></i>
@@ -143,6 +146,9 @@
       <p class="texte fade-in"><strong>À la peniche MCF2</strong></p> <br>
 
       <p class="texte fade-in">1 Quai de la Révolution, 94140 Alfortville</p> <br>
+
+      <a class="texte" onclick="addEvent('henne')"> <strong>Ajoutez à l'agenda</strong> </a><br>
+
 
       <a class="button-style"
          href="https://ul.waze.com/ul?place=ChIJP7dDJm9z5kcRKi2NNOEApQE&ll=48.78649210%2C2.42206790&navigate=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location">
@@ -209,6 +215,9 @@
         ce jour solennel,</p>
       <p class="texte fade-in" style="font-size: 14px">Mamie Suzette , Papi François, Mamie Ginette & Papi Félix</p><br>
 
+      <a class="texte" onclick="addEvent('houppa')"> <strong>Ajoutez à l'agenda</strong> </a><br>
+
+
       <a class="button-style"
          href="https://ul.waze.com/ul?place=ChIJ2851wNBy5kcR-nDki5YnVnM&ll=48.82006600%2C2.44433230&navigate=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location">
         <i class="fa-brands fa-waze"></i>
@@ -248,6 +257,9 @@
       <p class="texte fade-in"> 92350 Le Plessis-Robinson</p><br>
 
       <p class="texte fade-in">Les offices seront suivis d'un repas.</p> <br>
+
+      <a class="texte" onclick="addEvent('chabbat')"> <strong>Ajoutez à l'agenda</strong> </a><br>
+
 
       <a class="button-style"
          href="https://ul.waze.com/ul?place=ChIJmdeC4PR55kcRWUju3vJkUXU&ll=48.77903220%2C2.25210400&navigate=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location">
@@ -375,8 +387,13 @@
     </div>
   </section>
 
+  <button id="toggleMusic" class="music-toggle">
+    <i id="musicIcon" class="fas fa-volume-up"></i>
+  </button>
 
 </div>
+
+
 
 <audio id="myAudio" src="/music/saraPercheTiAmo.mp3"></audio>
 
@@ -390,6 +407,8 @@
 <script src="js/nomUrl.js"></script>
 <script src="js/nbPrsnRequire.js"></script>
 <script src="js/sheet.js"></script>
+<script src="js/agenda.js"></script>
+
 <script src="js/downloadRecap.js"></script>
 
 

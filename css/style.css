@@ -3,6 +3,28 @@
   padding: 0;
   box-sizing: border-box;
 }
+.music-toggle {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: rgb(237, 177, 191);
+  border-radius: 15px;
+  padding: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  z-index: 3;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: 2px solid white;
+}
+
+.music-toggle:hover {
+  background-color: rgb(235, 176, 190);
+}
+
+.music-toggle i {
+  font-size: 18px;
+  color: #333;
+}
 
 .no-scroll {
   overflow: hidden;
