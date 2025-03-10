@@ -43,23 +43,35 @@ function addEvent(eventId) {
       return;
   }
 
-  // Format des dates pour Google Calendar et Agenda
-  const startDateFormatted = startDate.replace(/T/, "").replace(/-/, "").replace(/:/, "");
-  const endDateFormatted = endDate.replace(/T/, "").replace(/-/, "").replace(/:/, "");
+  // Format des dates pour iCalendar (.ics)
+  const startDateFormatted = `${startDate.substring(0, 4)}-${startDate.substring(4, 6)}-${startDate.substring(6, 8)}T${startDate.substring(8, 10)}:${startDate.substring(10, 12)}:${startDate.substring(12, 14)}Z`;
+  const endDateFormatted = `${endDate.substring(0, 4)}-${endDate.substring(4, 6)}-${endDate.substring(6, 8)}T${endDate.substring(8, 10)}:${endDate.substring(10, 12)}:${endDate.substring(12, 14)}Z`;
 
-  // URL pour Google Calendar (Android et Desktop)
-  const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&details=${encodeURIComponent(description)}&location=${encodeURIComponent(location)}&dates=${startDateFormatted}/${endDateFormatted}`;
+  const icsContent = `
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Apple Inc.//NONSGML iCal 4.0//EN
+BEGIN:VEVENT
+SUMMARY:${title}
+DESCRIPTION:${description}
+LOCATION:${location}
+DTSTART:${startDateFormatted}
+DTEND:${endDateFormatted}
+END:VEVENT
+END:VCALENDAR
+  `.trim();
 
-  // URL pour Agenda (iOS) avec le protocole webcal://
-  const webcalUrl = `webcal://www.google.com/calendar/ical/${encodeURIComponent(title)}/${encodeURIComponent(description)}/${encodeURIComponent(location)}/${startDateFormatted}/${endDateFormatted}`;
+  // Créer un fichier .ics
+  const blob = new Blob([icsContent], { type: 'text/calendar' });
+  const url = URL.createObjectURL(blob);
 
-  // Détecter la plateforme (iOS ou Android)
+  // Détecter si on est sur un appareil iOS
   if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-    // Ouvre l'application Agenda iOS (webcal)
-    window.location.href = webcalUrl;
-  } else if (/Android/i.test(navigator.userAgent)) {
-    // Ouvre Google Calendar sur Android
-    window.location.href = googleCalendarUrl;
+    // Télécharge l'événement au format .ics pour iOS
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `${title}.ics`;
+    link.click();
   } else {
     alert("L'ajout d'événement n'est pas supporté sur cette plateforme.");
   }
