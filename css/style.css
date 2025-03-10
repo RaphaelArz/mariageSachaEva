@@ -150,7 +150,7 @@ a{
   flex-direction: column;
   color: white;
   font-size: 7vh;
-  height: 100vh; /* Prend toute la hauteur */
+  height: 95vh; /* Prend toute la hauteur */
   margin-bottom: 30px;
 }
 
