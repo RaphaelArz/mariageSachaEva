@@ -138,19 +138,19 @@ a{
 #firstImg {
   min-height: 100vh;
   display: flex;
-  flex-direction: column; /* Aligne en colonne : haut -> bas */
-  justify-content: space-between; /* Espace entre haut et bas */
+  justify-content: center;
+  align-items: flex-end;
   background-position: center;
-  background-size: cover;
-  color: white;
 }
 
 .firstImgContenaire {
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
-  justify-content: space-between;
-  height: 100vh; /* Prend toute la hauteur */
-  padding: 30px;
+  color: white;
+  font-size: 7vh;
+  margin-bottom: 30px;
 }
 
 .button-style {
