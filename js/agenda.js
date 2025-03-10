@@ -43,21 +43,23 @@ function addEvent(eventId) {
       return;
   }
 
-  // Format des dates pour iOS et Android : `YYYYMMDDTHHmmSSZ`
+  // Format des dates pour Google Calendar et Agenda
   const startDateFormatted = startDate.replace(/T/, "").replace(/-/, "").replace(/:/, "");
   const endDateFormatted = endDate.replace(/T/, "").replace(/-/, "").replace(/:/, "");
 
-  // iOS URL scheme pour ouvrir l'application Calendrier (Apple)
-  const iosUrl = `https://calendar.apple.com/event?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}&location=${encodeURIComponent(location)}&start=${startDateFormatted}&end=${endDateFormatted}`;
+  // URL pour Google Calendar (Android et Desktop)
+  const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&details=${encodeURIComponent(description)}&location=${encodeURIComponent(location)}&dates=${startDateFormatted}/${endDateFormatted}`;
 
-  // Android URL (intent) pour ajouter à Google Calendar
-  const androidUrl = `intent://add/event?title=${encodeURIComponent(title)}&description=${encodeURIComponent(description)}&eventLocation=${encodeURIComponent(location)}&beginTime=${startDateFormatted}&endTime=${endDateFormatted}#Intent;scheme=mailto;package=com.google.android.calendar;end`;
+  // URL pour Agenda (iOS) avec le protocole webcal://
+  const webcalUrl = `webcal://www.google.com/calendar/ical/${encodeURIComponent(title)}/${encodeURIComponent(description)}/${encodeURIComponent(location)}/${startDateFormatted}/${endDateFormatted}`;
 
-  // Détecter si l'utilisateur est sur iOS ou Android pour ouvrir l'URL spécifique
+  // Détecter la plateforme (iOS ou Android)
   if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-    window.location.href = iosUrl;
+    // Ouvre l'application Agenda iOS (webcal)
+    window.location.href = webcalUrl;
   } else if (/Android/i.test(navigator.userAgent)) {
-    window.location.href = androidUrl;
+    // Ouvre Google Calendar sur Android
+    window.location.href = googleCalendarUrl;
   } else {
     alert("L'ajout d'événement n'est pas supporté sur cette plateforme.");
   }
