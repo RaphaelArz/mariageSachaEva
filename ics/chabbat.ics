@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//www.mariage-eva-sacha.fr//Agenda chabbat Eva & Sacha//FR
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:chabbat-eva-sacha-20250828@Sacha-Eva.fr
+DTSTAMP:20250319T120000Z
+DTSTART;TZID=Europe/Paris:20250905T190000
+DTEND;TZID=Europe/Paris:20250906T230000
+SUMMARY:Chabbat Hatan Eva & Sacha
+LOCATION:Parc Hôtel, 10 Avenue Paul Langevin, 92350 Le Plessis-Robinson
+DESCRIPTION:Eva & Sacha vous accueilleront au Chabbat Hatan du vendredi 5 au samedi 6 septembre 2025.
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Chabbat Hatan Eva & Sacha
+TRIGGER:-PT4H
+END:VALARM
+END:VEVENT
+END:VCALENDAR

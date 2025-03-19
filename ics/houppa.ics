@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//www.mariage-eva-sacha.fr//Agenda Houppa Eva & Sacha//FR
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:houppa-eva-sacha-20250828@Sacha-Eva.fr
+DTSTAMP:20250319T120000Z
+DTSTART;TZID=Europe/Paris:20250904T170000
+DTEND;TZID=Europe/Paris:20250904T230000
+SUMMARY: Houppa Sacha & Eva
+LOCATION:Pavillon Gravelle, 2 Route du Pesage, 75012 Paris
+DESCRIPTION:Eva & Sacha vous invitent à la cérémonie religieuse au Pavillon Gravelle, suivie d'une réception.
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Houppa Sacha & Eva
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+END:VCALENDAR
