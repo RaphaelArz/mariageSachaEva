@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//inviteasy.fr//Agenda Mairie Eva & Sacha//FR
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+DTSTAMP:20250319T120000Z
+UID:mairie-eva-sacha-20250828@inviteasy.fr
+DTSTART;TZID=Europe/Paris:20250828T153000
+DTEND;TZID=Europe/Paris:20250828T163000
+SUMMARY:Cérémonie à la Mairie – Eva & Sacha
+LOCATION:48 rue de Paris, 94220 Charenton-le-Pont, France
+DESCRIPTION:Un Oui pour un Nom ! Venez assister à la cérémonie civile d’Eva & Sacha à la mairie.
+URL:https://ul.waze.com/ul?place=ChIJbXy3i_ty5kcRFfs6RuVuRks&ll=48.81971640%2C2.41609580&navigate=yes
+BEGIN:VALARM
+TRIGGER:-PT1H
+ACTION:DISPLAY
+DESCRIPTION:Rappel - Mairie Eva & Sacha dans 1h
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Rappel - Mairie Eva & Sacha demain
+END:VALARM
+END:VEVENT
+END:VCALENDAR
