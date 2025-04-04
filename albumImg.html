@@ -1,0 +1,80 @@
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galerie d'Images</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      padding: 20px;
+      background: #764ba2;
+      color: white;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      padding: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .no-images {
+      font-size: 1.5em;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+<img src="https://lh3.googleusercontent.com/d/10xqOypf5_Q-mdmpOSVFwBEhqxlQ3SgjH=w1000" alt="Image description">
+
+<h1>Galerie d'Images</h1>
+<div class="gallery" id="gallery">
+  <!-- Les images seront ajoutées ici par JavaScript -->
+</div>
+
+<script>
+  // URL de ton script Google Apps
+  const apiUrl = 'https://script.google.com/macros/s/AKfycbyKaqNnNoa0HhM_h3vYLp0e06kF0BQ3dic_JFHjclmj-Em7bfoY61z7g7QHT8bt9M8/exec';
+
+  // Appel à l'API pour récupérer les images
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(images => {
+      const gallery = document.getElementById('gallery');
+      if (images.length === 0 || (images.length === 1 && images[0] === "Aucune image disponible.")) {
+        const message = document.createElement('div');
+        message.className = "no-images";
+        message.innerText = "Aucune image disponible pour le moment.";
+        gallery.appendChild(message);
+      } else {
+        // Affiche les images
+        images.forEach(url => {
+          const img = document.createElement('img');
+          img.src = url;
+          gallery.appendChild(img);
+        });
+      }
+    })
+    .catch(error => {
+      console.error("Erreur lors du chargement des images:", error);
+    });
+</script>
+</body>
+</html>
