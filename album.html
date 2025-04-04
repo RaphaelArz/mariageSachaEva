@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload d'Images</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: url('/img/previewES.jpg') no-repeat center center fixed;
+      background-size: cover;
+      text-align: center;
+    }
+
+    .container {
+      background: rgba(255, 250, 244, 0.16); /* Fond semi-transparent pour mieux voir le texte */
+      padding: 20px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 400px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .upload-label {
+      display: block;
+      background: white;
+      color: #efb2c1;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .status {
+      margin-top: 15px;
+      font-size: 1rem;
+    }
+
+    .btn {
+      margin-top: 15px;
+      background: #efb2c1;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background: #e39fb0;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        font-size: 14px; /* Ajuste la taille de la police sur les petits écrans */
+      }
+
+      .container {
+        width: 90%;
+        padding: 15px;
+      }
+
+      .upload-label {
+        font-size: 0.9rem;
+      }
+
+      .btn {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<h1>Uploader des Images</h1>
+<div class="container">
+  <label for="fileInput" class="upload-label">Choisir des fichiers</label>
+  <input type="file" id="fileInput" multiple>
+  <p class="status" id="fileCount">Aucun fichier sélectionné.</p>
+  <button class="btn" onclick="uploadFiles()">Envoyer</button>
+  <p class="status" id="status"></p>
+</div>
+
+<script>
+  const fileInput = document.getElementById('fileInput');
+  const fileCount = document.getElementById('fileCount');
+  const status = document.getElementById('status');
+
+  fileInput.addEventListener('change', () => {
+    const count = fileInput.files.length;
+    fileCount.innerText = count > 0 ? `${count} fichier(s) sélectionné(s).` : "Aucun fichier sélectionné.";
+  });
+
+  async function uploadFiles() {
+    if (!fileInput.files.length) {
+      status.innerText = "❌ Veuillez sélectionner des fichiers.";
+      return;
+    }
+
+    status.innerText = "⏳ Envoi en cours...";
+    let erreurs = 0;
+
+    for (let file of fileInput.files) {
+      const success = await uploadFile(file);
+      if (!success) erreurs++;
+    }
+
+    if (erreurs > 0) {
+      status.innerText = `⚠️ ${erreurs} fichier(s) n'ont pas été envoyés.`;
+    } else {
+      status.innerText = "✅ Tous les fichiers ont été envoyés !";
+    }
+  }
+
+  async function uploadFile(file) {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = async function () {
+        const base64 = reader.result.split(",")[1];
+
+        const formData = new URLSearchParams();
+        formData.append("file", base64);
+        formData.append("fileName", file.name);
+        formData.append("mimeType", file.type);
+
+        try {
+          const response = await fetch("https://script.google.com/macros/s/AKfycbyN4EZq67WECx6qBJSUHUk0v5suBPVAH7eHgrnJatzqQQK18UV0Hys5fkDuJ5WOJCY/exec", {
+            method: "POST",
+            body: formData,
+            headers: { "Content-Type": "application/x-www-form-urlencoded" }
+          });
+
+          const result = await response.text();
+          console.log("Réponse serveur:", result);
+
+          if (!result.includes("Fichier uploadé avec succès")) {
+            console.error("Erreur d'upload :", result);
+            resolve(false);
+          } else {
+            resolve(true);
+          }
+        } catch (error) {
+          console.error("Erreur de connexion :", error);
+          resolve(false);
+        }
+      };
+    });
+  }
+</script>
+</body>
+</html>
