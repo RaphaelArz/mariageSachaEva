@@ -30,7 +30,7 @@
     }
 
     .gallery {
-      column-count: 3;
+      column-count: 3; /* Affichage style Masonry */
       column-gap: 15px;
     }
 
@@ -44,22 +44,18 @@
       transition: transform 0.3s ease-in-out;
     }
 
-    .gallery-item img,
-    .gallery-item video {
+    .gallery-item img {
       width: 100%;
       height: auto;
       display: block;
       border-radius: 10px;
     }
 
-    .gallery-item video {
-      background: #000;
-    }
-
     .gallery-item:hover {
       transform: scale(1.02);
     }
 
+    /* Responsive */
     @media (max-width: 900px) {
       .gallery {
         column-count: 2;
@@ -82,31 +78,21 @@
 <script>
   async function loadImages() {
     try {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbwmgcJ1u-8jXuwMOPlRJwGAD1pMIHpcsaZc4OH6-2lVW61UjUOMeGs5UaVPPzF0pfI/exec");
-      const files = await response.json();
+      const response = await fetch("https://script.google.com/macros/s/AKfycbwVZjytnCJRrTESjLsAg9Cq3Fwrg9f-JxP4OAS23220mu5vC3q6MXmW4OX3vH-1CFo/exec");
+      const images = await response.json();
       const gallery = document.getElementById("gallery");
 
-      files.forEach(file => {
+      images.forEach(url => {
         const div = document.createElement("div");
         div.classList.add("gallery-item");
-
-        if (file.type.startsWith("image/")) {
-          const img = document.createElement("img");
-          img.src = file.url;
-          img.alt = "Image Drive";
-          div.appendChild(img);
-        } else if (file.type.startsWith("video/")) {
-          const video = document.createElement("video");
-          video.src = file.url;
-          video.controls = true;
-          video.playsInline = true;
-          div.appendChild(video);
-        }
-
+        const img = document.createElement("img");
+        img.src = url;
+        img.alt = "Image Drive";
+        div.appendChild(img);
         gallery.appendChild(div);
       });
     } catch (error) {
-      console.error("Erreur lors du chargement des fichiers :", error);
+      console.error("Erreur lors du chargement des images :", error);
     }
   }
 
