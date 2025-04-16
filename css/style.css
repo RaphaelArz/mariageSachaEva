@@ -176,6 +176,9 @@ a{
 }
 
 .agenda{
+
+  display: inline-block; /* Permet au scale de bien s'appliquer */
+
   border: 2px solid #000000;
   padding: 10px 20px;
   border-radius: 5px;
