@@ -231,6 +231,11 @@ a{
   }
 }
 
+.spacer {
+  height: 15px; /* ou ce que tu veux comme espacement vertical */
+}
+
+
 .text-container {
   width: 100%; /* Le cadre prend toute l'image */
   height: auto; /* Le cadre prend toute l'image */
