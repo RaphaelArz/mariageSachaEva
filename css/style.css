@@ -175,7 +175,11 @@ a{
   transform: scale(1.05); /* Augmente de 10% */
 }
 
-
+.agenda{
+  border: 2px solid #000000;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
 
 .text-section {
   background-image: url('/img/fleurTaupe.jpg');
@@ -242,7 +246,6 @@ a{
   font-family: 'pinyon', serif;
   font-size: 35px;
   color: #efb2c1;
-  font-weight: 300;
 
 }
 
@@ -251,7 +254,6 @@ a{
   font-size: 18px;
   color: #333333;
   font-style: italic;
-  font-weight: lighter;
 }
 br {
   display: block;
