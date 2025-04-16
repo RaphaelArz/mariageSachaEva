@@ -226,7 +226,7 @@ a{
 }
 @supports (-webkit-touch-callout: none) {
   br {
-    margin: 0px 0; /* Ajuste uniquement pour iOS */
+    margin: 0 0; /* Ajuste uniquement pour iOS */
     line-height: 0;
   }
 }
