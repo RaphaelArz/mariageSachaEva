@@ -224,6 +224,11 @@ a{
   padding-right: 15px;
 
 }
+@supports (-webkit-touch-callout: none) {
+  br {
+    margin: 8px 0; /* Ajuste uniquement pour iOS */
+  }
+}
 
 .text-container {
   width: 100%; /* Le cadre prend toute l'image */
