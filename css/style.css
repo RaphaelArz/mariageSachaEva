@@ -179,7 +179,18 @@ a{
   border: 2px solid #000000;
   padding: 10px 20px;
   border-radius: 5px;
+  transition: all 0.4s ease;
 }
+
+.agenda:hover{
+  color: #efb2c1;
+  border: 2px solid #efb2c1;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transform: scale(1.05); /* Augmente de 10% */
+
+}
+
 
 .text-section {
   background-image: url('/img/fleurTaupe.jpg');
