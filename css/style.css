@@ -20,6 +20,21 @@
 .music-toggle:hover {
   background-color: rgb(235, 176, 190);
 }
+body {
+  -webkit-text-size-adjust: none; /* iOS Safari */
+  text-size-adjust: none;
+}
+
+
+
+br {
+  display: block;
+  content: "";
+  margin: 25px 0;
+  line-height: 0;
+}
+
+
 
 .music-toggle i {
   font-size: 18px;
@@ -268,11 +283,6 @@ a{
   font-size: 18px;
   color: #333333;
   font-style: italic;
-}
-br {
-  display: block;
-  content: "";
-  margin: 25px 0; /* Réduit l'espacement vertical */
 }
 
 
