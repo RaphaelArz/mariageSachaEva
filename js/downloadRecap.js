@@ -5,7 +5,7 @@ function downloadImage() {
   // Associer des images spécifiques à chaque page
   let imageUrl = "/img/recapSachaEva1.png"; // Image par défaut
 
-  if (pathname.includes("ms.html")) {
+  if (pathname.includes("index.html")) {
     imageUrl = "/img/recapSachaEva1.png";
   } else if (pathname.includes("mhs.html")) {
     imageUrl = "/img/recapSachaEva2.png";
