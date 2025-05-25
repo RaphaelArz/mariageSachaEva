@@ -3,617 +3,247 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Eva & Sacha - Feed</title>
+  <title>Eva & Sacha – Feed</title>
 
-  <!-- Font Awesome CDN -->
+  <!-- Font Awesome -->
   <link
     rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: "Cormorant", serif;
+    *{margin:0;padding:0;box-sizing:border-box;font-family:"Cormorant",serif}
+    body{
+      background:url("/img/fleurTaupe.jpg") center/cover fixed no-repeat;
+      min-height:100vh;display:flex;flex-direction:column;align-items:center;color:#333
     }
-
-    body {
-      background-image: url("/img/fleurTaupe.jpg");
-      background-size: cover;
-      background-attachment: fixed;
-      background-position: center;
-      color: #333;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    /* NAVBAR */
+    nav{
+      position:sticky;top:0;z-index:100;width:100%;
+      background:rgb(237,177,191);color:#222;
+      padding:15px 0;text-align:center;font-size:1.8rem;font-weight:700;
+      letter-spacing:2px;box-shadow:0 4px 10px rgba(0,0,0,.3)
     }
-
-    /* Navbar */
-    nav {
-      width: 100%;
-      background-color: rgb(237, 177, 191);
-      padding: 15px 0;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      text-align: center;
-      font-size: 1.8rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: #222;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+    /* CONTAINER */
+    .container{max-width:900px;width:100%;padding:20px;margin-top:20px;flex-grow:1; background:url("/img/fleurTaupe.jpg") center/cover fixed no-repeat;}
+    /* GALLERY */
+    .gallery{display:flex;flex-wrap:wrap;gap:15px;justify-content:center;transition:.3s;}
+    .gallery.two-cols .gallery-item{width:calc(50% - 15px)}
+    .gallery.one-col .gallery-item{width:100%}
+    @media(min-width:601px){.gallery .gallery-item{width:calc(50% - 15px)}}
+    .gallery-item{aspect-ratio:1/1;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.15);cursor:pointer;transition:transform .3s}
+    .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+    .gallery-item:hover img{transform:scale(1.05)}
+    /* TOGGLE */
+    .toggle-container{
+      position:fixed;top:80px;right:15px;z-index:1100;
+      background:rgba(0,0,0,.75);color:#fff;padding:8px 12px;border-radius:10px;
+      display:flex;align-items:center;gap:8px;font-weight:600;font-size:1rem;
+      cursor:pointer;user-select:none;box-shadow:0 3px 10px rgba(0,0,0,.4);
+      transition:background .3s,color .3s
     }
-
-    .container {
-      max-width: 900px;
-      width: 100%;
-      padding: 20px;
-      margin-top: 20px;
-      flex-grow: 1;
+    .toggle-container:hover{background:rgba(0,0,0,.9);color:#f8bbd0}
+    .toggle-container i{font-size:1.3rem}
+    @media(min-width:601px){.toggle-container{display:none}}
+    /* UPLOAD BUTTON */
+    .upload-button{
+      position:fixed;bottom:40px;right:15px;z-index:1100;
+      background:rgba(0,0,0,.85);color:#fff;padding:12px 16px;border-radius:50px;
+      display:flex;align-items:center;gap:8px;font-weight:700;font-size:1.1rem;
+      cursor:pointer;user-select:none;box-shadow:0 3px 10px rgba(0,0,0,.5);
+      transition:background .3s
     }
-
-    h1 {
-      font-size: 1.6rem;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    /* Bouton toggle fixé en haut à droite, un peu plus bas */
-    .toggle-container {
-      position: fixed;
-      top: 80px; /* Légèrement plus bas que la navbar */
-      right: 15px;
-      z-index: 1100;
-      background: rgba(0, 0, 0, 0.75);
-      padding: 8px 12px;
-      border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.4);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      user-select: none;
-      font-weight: 600;
-      font-size: 1rem;
-      color: white;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-    .toggle-container:hover {
-      background: rgba(0, 0, 0, 0.9);
-      color: #f8bbd0;
-    }
-    .toggle-container i {
-      font-size: 1.3rem;
-      line-height: 1;
-    }
-
-    /* Bouton upload fixé en bas à droite, sous le toggle */
-    .upload-button {
-      position: fixed;
-      bottom: 40px;
-      right: 15px;
-      z-index: 1100;
-      background: rgba(0, 0, 0, 0.85);
-      color: white;
-      padding: 12px 16px;
-      border-radius: 50px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.5);
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 1.1rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      user-select: none;
-      transition: background-color 0.3s ease;
-    }
-    .upload-button:hover {
-      background: rgba(0, 0, 0, 1);
-    }
-    .upload-button i {
-      font-size: 1.4rem;
-      line-height: 1;
-    }
-
-    /* Gallery flex et variantes */
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      justify-content: center;
-      transition: all 0.3s ease;
-    }
-
-    /* Desktop : toggle caché, 2 images par ligne */
-    @media (min-width: 601px) {
-      .toggle-container {
-        display: none;
-      }
-      .gallery.two-cols .gallery-item,
-      .gallery.one-col .gallery-item {
-        width: calc(50% - 15px);
-      }
-    }
-
-    /* Mobile : toggle visible et contrôle largeur */
-    @media (max-width: 600px) {
-      .toggle-container {
-        display: flex;
-      }
-      .gallery.two-cols .gallery-item {
-        width: calc(50% - 15px);
-      }
-      .gallery.one-col .gallery-item {
-        width: 100%;
-      }
-    }
-
-    .gallery-item {
-      aspect-ratio: 1 / 1;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      background-color: white;
-      position: relative;
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      border-radius: 12px;
-      transition: transform 0.3s ease;
-    }
-
-    .gallery-item:hover img {
-      transform: scale(1.05);
-    }
-
-    /* Lightbox */
-    #lightbox {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.8);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      visibility: hidden;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: 9999;
-    }
-
-    #lightbox.active {
-      visibility: visible;
-      opacity: 1;
-    }
-
-    #lightbox img {
-      max-width: 90vw;
-      max-height: 90vh;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(255,255,255,0.7);
-      position: relative;
-    }
-
-    /* Bouton fermer X */
-    #lightbox button.close-btn {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: rgba(255,255,255,0.8);
-      border: none;
-      font-size: 2rem;
-      font-weight: bold;
-      color: #333;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      z-index: 10000;
-      line-height: 1;
-    }
-
-    #lightbox button.close-btn:hover {
-      background: rgba(255,255,255,1);
-    }
-
-    /* Loader */
-    #loader {
-      margin: 40px auto;
-      border: 8px solid #f3f3f3;
-      border-top: 8px solid rgb(237, 177, 191);
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      animation: spin 1s linear infinite;
-      display: none;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg);}
-      100% { transform: rotate(360deg);}
-    }
-
-
-    /* Modal upload */
-    #uploadModal {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.75);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 12000;
-    }
-    #uploadModal.active {
-      display: flex;
-    }
-    #uploadModal .modal-content {
-      background: rgba(255, 250, 244, 0.9);
-      padding: 25px;
-      border-radius: 15px;
-      max-width: 400px;
-      width: 90%;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      color: #333;
-      text-align: center;
-      position: relative;
-      font-family: Arial, sans-serif;
-    }
-    #uploadModal h2 {
-      margin-bottom: 20px;
-      font-weight: 700;
-      font-size: 1.8rem;
-      color: #efb2c1;
-    }
-    #uploadModal input[type="file"] {
-      display: none;
-    }
-    #uploadModal label.upload-label {
-      display: inline-block;
-      background: #efb2c1;
-      color: white;
-      padding: 10px 25px;
-      border-radius: 50px;
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 1rem;
-      transition: background-color 0.3s ease;
-      margin-bottom: 15px;
-    }
-    #uploadModal label.upload-label:hover {
-      background: #e39fb0;
-    }
-    #uploadModal img.preview {
-      max-width: 100%;
-      border-radius: 12px;
-      margin-bottom: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      display: none;
-    }
-    #uploadModal .status {
-      margin: 10px 0 15px;
-      font-weight: 600;
-      min-height: 1.2em;
-      color: #333;
-    }
-    #uploadModal button.share-btn {
-      background: #efb2c1;
-      border: none;
-      color: white;
-      padding: 12px 30px;
-      font-weight: 700;
-      font-size: 1rem;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      width: 100%;
-    }
-    #uploadModal button.share-btn:hover:not(:disabled) {
-      background: #e39fb0;
-    }
-    #uploadModal button.share-btn:disabled {
-      background: #ccc;
-      cursor: default;
-      color: #999;
-    }
-    #uploadModal button.close-modal {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: transparent;
-      border: none;
-      font-size: 1.5rem;
-      font-weight: 700;
-      cursor: pointer;
-      color: #efb2c1;
-      transition: color 0.3s ease;
-    }
-    #uploadModal button.close-modal:hover {
-      color: #e39fb0;
-    }
+    .upload-button:hover{background:#000}
+    .upload-button i{font-size:1.4rem}
+    /* LIGHTBOX */
+    #lightbox{position:fixed;inset:0;display:flex;justify-content:center;align-items:center;background:rgba(0,0,0,.8);visibility:hidden;opacity:0;transition:.3s;z-index:9999}
+    #lightbox.active{visibility:visible;opacity:1}
+    #lightbox img{max-width:90vw;max-height:90vh;border-radius:15px;box-shadow:0 0 20px rgba(255,255,255,.7)}
+    .close-btn{position:fixed;top:20px;right:20px;width:40px;height:40px;border:none;border-radius:50%;background:rgba(255,255,255,.8);font-size:2rem;font-weight:700;color:#333;cursor:pointer;transition:background .3s;z-index:10000}
+    .close-btn:hover{background:#fff}
+    /* PAGE LOADER */
+    #loader{margin:40px auto;width:60px;height:60px;border:8px solid #f3f3f3;border-top:8px solid rgb(237,177,191);border-radius:50%;animation:spin 1s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    /* MODAL UPLOAD */
+    #uploadModal{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;justify-content:center;align-items:center;z-index:12000}
+    #uploadModal.active{display:flex}
+    .modal-content{background:rgba(255,250,244,.95);padding:25px;border-radius:15px;width:90%;max-width:400px;box-shadow:0 5px 15px rgba(0,0,0,.3);text-align:center;position:relative;color:#333}
+    .modal-content h2{color:#efb2c1;margin-bottom:20px;font-size:1.8rem}
+    .modal-content input[type="file"]{display:none}
+    .upload-label{display:inline-block;background:#efb2c1;color:#fff;padding:10px 25px;border-radius:50px;cursor:pointer;font-weight:700;margin-bottom:15px;transition:background .3s}
+    .upload-label:hover{background:#e39fb0}
+    .preview{max-width:100%;border-radius:12px;margin-bottom:15px;display:none;box-shadow:0 4px 10px rgba(0,0,0,.2)}
+    .status{min-height:1.2em;font-weight:600;margin:10px 0 15px}
+    .share-btn{width:100%;background:#efb2c1;color:#fff;border:none;font-weight:700;font-size:1rem;padding:12px 30px;border-radius:50px;transition:background .3s;cursor:pointer}
+    .share-btn:hover:not(:disabled){background:#e39fb0}
+    .share-btn:disabled{background:#ccc;color:#999;cursor:default}
+    .close-modal{position:absolute;top:12px;right:12px;background:transparent;border:none;font-size:1.5rem;font-weight:700;cursor:pointer;color:#efb2c1;transition:color .3s}
+    .close-modal:hover{color:#e39fb0}
+    /* LOADER DANS LE MODAL */
+    .modal-loader{display:none;flex-direction:column;align-items:center;gap:10px;margin-top:10px}
+    .modal-loader .spinner{width:40px;height:40px;border:6px solid #e39fb0;border-top-color:#efb2c1;border-radius:50%;animation:spin .8s linear infinite}
   </style>
 </head>
 
 <body>
   <nav>Eva & Sacha</nav>
 
-  <div class="toggle-container" id="toggleContainer" title="Basculer galerie 1 ou 2 colonnes">
-    <i class="fa-solid fa-grip-vertical"></i> 
-    <span>Galerie 2 colonnes</span>
+  <!-- TOGGLE -->
+  <div class="toggle-container" id="toggleBtn">
+    <i class="fa-solid fa-grip-vertical"></i><span></span>
   </div>
 
+  <!-- CONTAINER -->
   <div class="container">
-    <h1>Le feed d’images</h1>
-
-    <div class="gallery two-cols" id="gallery">
-      <!-- Images chargées par JS -->
-    </div>
-
+    <div class="gallery two-cols" id="gallery"></div>
     <div id="loader"></div>
   </div>
 
-  <!-- Lightbox -->
+  <!-- LIGHTBOX -->
   <div id="lightbox">
-    <button class="close-btn" title="Fermer la lightbox">&times;</button>
-    <img src="" alt="Agrandissement image" />
+    <button class="close-btn" title="Fermer">&times;</button>
+    <img src="" alt="Agrandissement" />
   </div>
 
-  <!-- Bouton upload -->
-  <div class="upload-button" id="uploadButton" title="Ajouter une image">
-    <i class="fa-solid fa-plus"></i> Ajouter
-  </div>
+  <!-- UPLOAD BUTTON -->
+  <div class="upload-button" id="openUploadModal"><i class="fa-solid fa-plus"></i> Ajouter</div>
 
-  <!-- Modal upload -->
-  <div id="uploadModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <!-- MODAL -->
+  <div id="uploadModal" aria-hidden="true">
     <div class="modal-content">
       <button class="close-modal" title="Fermer">&times;</button>
-      <h2 id="modalTitle">Ajouter une image</h2>
+      <h2 style="color:#000">Ajouter une image</h2>
 
-      <label for="modalFileInput" class="upload-label">Choisir une photo</label>
-      <input type="file" id="modalFileInput" accept="image/*" />
+      <label class="upload-label" for="fileInput">Choisir une photo</label>
+      <input type="file" id="fileInput" accept="image/*"/>
 
-      <img src="" alt="Aperçu de l'image sélectionnée" class="preview" id="previewImg" />
+      <img id="previewImg" class="preview" alt="Aperçu"/>
 
       <p class="status" id="modalStatus"></p>
 
       <button class="share-btn" id="shareBtn" disabled>Partager</button>
+
+      <!-- Loader inside modal -->
+      <div class="modal-loader" id="modalLoader">
+        <div class="spinner"></div>
+        <p>Envoi en cours…</p>
+      </div>
     </div>
   </div>
 
   <script>
-    // === Toggle galerie 1 ou 2 colonnes ===
-    const toggleContainer = document.getElementById("toggleContainer");
-    const gallery = document.getElementById("gallery");
+    /* ENDPOINTS */
+    const GET_IMAGES_URL ="https://script.google.com/macros/s/AKfycbwVZjytnCJRrTESjLsAg9Cq3Fwrg9f-JxP4OAS23220mu5vC3q6MXmW4OX3vH-1CFo/exec";
+    const POST_IMAGE_URL="https://script.google.com/macros/s/AKfycbyN4EZq67WECx6qBJSUHUk0v5suBPVAH7eHgrnJatzqQQK18UV0Hys5fkDuJ5WOJCY/exec";
 
-    let twoCols = true;
+    /* ELEMENTS */
+    const gallery=document.getElementById("gallery");
+    const loader=document.getElementById("loader");
+    const toggleBtn=document.getElementById("toggleBtn");
+    const openModal=document.getElementById("openUploadModal");
+    const uploadModal=document.getElementById("uploadModal");
+    const closeModal=uploadModal.querySelector(".close-modal");
+    const fileInput=document.getElementById("fileInput");
+    const previewImg=document.getElementById("previewImg");
+    const modalStatus=document.getElementById("modalStatus");
+    const shareBtn=document.getElementById("shareBtn");
+    const modalLoader=document.getElementById("modalLoader");
+    const lightbox=document.getElementById("lightbox");
+    const lightboxImg=lightbox.querySelector("img");
+    const closeLight=lightbox.querySelector(".close-btn");
 
-    toggleContainer.addEventListener("click", () => {
-      twoCols = !twoCols;
-      if (twoCols) {
-        gallery.classList.remove("one-col");
-        gallery.classList.add("two-cols");
-        toggleContainer.querySelector("span").textContent = "Galerie 2 colonnes";
-      } else {
-        gallery.classList.remove("two-cols");
-        gallery.classList.add("one-col");
-        toggleContainer.querySelector("span").textContent = "Galerie 1 colonne";
+    /* LOAD IMAGES */
+    async function loadImages(){
+      loader.style.display="block";
+      gallery.innerHTML="";
+      try{
+        const res=await fetch(GET_IMAGES_URL);
+        const urls=await res.json();
+        urls.forEach(u=>addImage(u,true));
+      }catch(e){console.error(e)}
+      loader.style.display="none";
+    }
+    function addImage(url,append){
+      const div=document.createElement("div");div.className="gallery-item";div.tabIndex=0;
+      const img=document.createElement("img");img.src=url;img.alt="Image Drive";
+      div.appendChild(img);
+      div.addEventListener("click",()=>openLightbox(url));
+      div.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openLightbox(url);}});
+      append?gallery.appendChild(div):gallery.prepend(div);
+    }
+
+    /* LIGHTBOX */
+    function openLightbox(src){lightboxImg.src=src;lightbox.classList.add("active");document.body.style.overflow="hidden";}
+    function closeLightbox(){lightbox.classList.remove("active");document.body.style.overflow="";lightboxImg.src="";}
+    closeLight.addEventListener("click",closeLightbox);
+    lightbox.addEventListener("click",e=>{if(e.target===lightbox)closeLightbox();});
+    document.addEventListener("keydown",e=>{if(e.key==="Escape"&&lightbox.classList.contains("active"))closeLightbox();});
+
+    /* TOGGLE GALLERY */
+    let twoCols=true;
+    toggleBtn.addEventListener("click",()=>{
+      twoCols=!twoCols;
+      gallery.classList.toggle("one-col",!twoCols);
+      gallery.classList.toggle("two-cols",twoCols);
+      toggleBtn.querySelector("span").textContent=twoCols?"":"";
+    });
+
+    /* MODAL OPEN / CLOSE */
+    openModal.addEventListener("click",openUploadModal);
+    closeModal.addEventListener("click",closeUploadModal);
+    function openUploadModal(){uploadModal.classList.add("active");document.body.style.overflow="hidden";resetModal();}
+    function closeUploadModal(){uploadModal.classList.remove("active");document.body.style.overflow="";}
+    function resetModal(){
+      fileInput.value="";previewImg.style.display="none";previewImg.src="";
+      modalStatus.textContent="";shareBtn.disabled=true;modalLoader.style.display="none";
+    }
+
+    /* PREVIEW */
+    fileInput.addEventListener("change",()=>{
+      const file=fileInput.files[0];
+      if(!file){resetModal();return;}
+      if(!file.type.startsWith("image/")){modalStatus.textContent="❌ Fichier non supporté";fileInput.value="";return;}
+      const rd=new FileReader();
+      rd.onload=e=>{previewImg.src=e.target.result;previewImg.style.display="block";shareBtn.disabled=false;};
+      rd.readAsDataURL(file);
+    });
+
+    /* UPLOAD */
+    shareBtn.addEventListener("click",async()=>{
+      const file=fileInput.files[0];
+      if(!file){modalStatus.textContent="❌ Sélectionnez une image";return;}
+      shareBtn.disabled=true;modalStatus.textContent="";modalLoader.style.display="flex";
+      const ok=await uploadFile(file);
+      modalLoader.style.display="none";
+      if(ok){
+        modalStatus.textContent="✅ Image envoyée !";
+        addImage(previewImg.src,false);
+        setTimeout(closeUploadModal,1500);
+      }else{
+        modalStatus.textContent="❌ Erreur lors de l'envoi";
+        shareBtn.disabled=false;
       }
     });
 
-    // === Load images from /img/feed folder ===
-    const images = [
-      "feed1.jpg",
-      "feed2.jpg",
-      "feed3.jpg",
-      "feed4.jpg",
-      "feed5.jpg",
-      "feed6.jpg",
-      "feed7.jpg",
-      "feed8.jpg"
-    ];
-
-    function createGallery() {
-      gallery.innerHTML = "";
-      images.forEach((imgName) => {
-        const div = document.createElement("div");
-        div.className = "gallery-item";
-        div.tabIndex = 0;
-        const img = document.createElement("img");
-        img.src = `/img/feed/${imgName}`;
-        img.alt = "Image du feed";
-        div.appendChild(img);
-        gallery.appendChild(div);
-
-        // Click ouvre la lightbox
-        div.addEventListener("click", () => openLightbox(img.src));
-        div.addEventListener("keydown", (e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            openLightbox(img.src);
-          }
-        });
-      });
-    }
-    createGallery();
-
-    // === Lightbox ===
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = lightbox.querySelector("img");
-    const closeLightboxBtn = lightbox.querySelector(".close-btn");
-
-    function openLightbox(src) {
-      lightboxImg.src = src;
-      lightbox.classList.add("active");
-      document.body.style.overflow = "hidden";
-    }
-    function closeLightbox() {
-      lightbox.classList.remove("active");
-      document.body.style.overflow = "";
-      lightboxImg.src = "";
-    }
-    closeLightboxBtn.addEventListener("click", closeLightbox);
-    lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox) closeLightbox();
-    });
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && lightbox.classList.contains("active")) closeLightbox();
-    });
-
-    // === Loader ===
-    const loader = document.getElementById("loader");
-    function showLoader() {
-      loader.style.display = "block";
-    }
-    function hideLoader() {
-      loader.style.display = "none";
-    }
-
-    // === Upload Modal & logic ===
-    const uploadButton = document.getElementById("uploadButton");
-    const uploadModal = document.getElementById("uploadModal");
-    const closeModalBtn = uploadModal.querySelector(".close-modal");
-    const modalFileInput = document.getElementById("modalFileInput");
-    const previewImg = document.getElementById("previewImg");
-    const modalStatus = document.getElementById("modalStatus");
-    const shareBtn = document.getElementById("shareBtn");
-
-    uploadButton.addEventListener("click", () => {
-      openModal();
-    });
-    closeModalBtn.addEventListener("click", closeModal);
-
-    function openModal() {
-      modalStatus.textContent = "";
-      previewImg.src = "";
-      previewImg.style.display = "none";
-      modalFileInput.value = "";
-      shareBtn.disabled = true;
-      uploadModal.classList.add("active");
-      document.body.style.overflow = "hidden";
-      modalFileInput.focus();
-    }
-    function closeModal() {
-      uploadModal.classList.remove("active");
-      document.body.style.overflow = "";
-    }
-
-    // Affichage preview image sélectionnée
-    modalFileInput.addEventListener("change", () => {
-      const file = modalFileInput.files[0];
-      if (!file) {
-        previewImg.src = "";
-        previewImg.style.display = "none";
-        shareBtn.disabled = true;
-        modalStatus.textContent = "";
-        return;
-      }
-      if (!file.type.startsWith("image/")) {
-        modalStatus.textContent = "❌ Veuillez sélectionner une image valide.";
-        previewImg.style.display = "none";
-        shareBtn.disabled = true;
-        return;
-      }
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        previewImg.src = e.target.result;
-        previewImg.style.display = "block";
-        modalStatus.textContent = "";
-        shareBtn.disabled = false;
-      };
-      reader.readAsDataURL(file);
-    });
-
-    // Upload image
-    shareBtn.addEventListener("click", async () => {
-      const file = modalFileInput.files[0];
-      if (!file) {
-        modalStatus.textContent = "❌ Veuillez sélectionner une image.";
-        return;
-      }
-
-      shareBtn.disabled = true;
-      modalStatus.textContent = "⏳ Envoi en cours...";
-
-      const success = await uploadFile(file);
-
-      if (success) {
-        modalStatus.textContent = "✅ Image envoyée avec succès !";
-        // Optionnel : Ajouter dans la galerie à la volée (non persisté côté serveur)
-        images.unshift(file.name);
-        const div = document.createElement("div");
-        div.className = "gallery-item";
-        div.tabIndex = 0;
-        const img = document.createElement("img");
-        img.src = previewImg.src;
-        img.alt = "Image du feed";
-        div.appendChild(img);
-        gallery.insertBefore(div, gallery.firstChild);
-        div.addEventListener("click", () => openLightbox(img.src));
-        div.addEventListener("keydown", (e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            openLightbox(img.src);
-          }
-        });
-
-        // Fermer modal au bout de 1.5s
-        setTimeout(closeModal, 1500);
-      } else {
-        modalStatus.textContent = "❌ Erreur lors de l'envoi. Réessayez.";
-        shareBtn.disabled = false;
-      }
-    });
-
-    // Upload file function basée sur ton code
-    async function uploadFile(file) {
-      return new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onloadend = async function () {
-          const base64 = reader.result.split(",")[1];
-
-          const formData = new URLSearchParams();
-          formData.append("file", base64);
-          formData.append("fileName", file.name);
-          formData.append("mimeType", file.type);
-
-          try {
-            const response = await fetch(
-              "https://script.google.com/macros/s/AKfycbyN4EZq67WECx6qBJSUHUk0v5suBPVAH7eHgrnJatzqQQK18UV0Hys5fkDuJ5WOJCY/exec",
-              {
-                method: "POST",
-                body: formData,
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-              }
-            );
-
-            const result = await response.text();
-            console.log("Réponse serveur:", result);
-
-            if (!result.includes("Fichier uploadé avec succès")) {
-              console.error("Erreur d'upload :", result);
-              resolve(false);
-            } else {
-              resolve(true);
-            }
-          } catch (error) {
-            console.error("Erreur de connexion :", error);
-            resolve(false);
-          }
+    async function uploadFile(file){
+      return new Promise(res=>{
+        const rd=new FileReader();
+        rd.onloadend=async()=>{
+          const base64=rd.result.split(",")[1];
+          const body=new URLSearchParams({file:base64,fileName:file.name,mimeType:file.type});
+          try{
+            const r=await fetch(POST_IMAGE_URL,{method:"POST",body,headers:{"Content-Type":"application/x-www-form-urlencoded"}});
+            const txt=await r.text();console.log("Serveur:",txt);res(txt.includes("Fichier uploadé"));
+          }catch(e){console.error(e);res(false);}
         };
+        rd.readAsDataURL(file);
       });
     }
+
+    /* INIT */
+    loadImages();
   </script>
 </body>
 </html>
