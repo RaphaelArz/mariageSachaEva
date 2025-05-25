@@ -39,12 +39,23 @@
     }
 
     .gallery{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      justify-content:center;
-      transition:.3s;
-    }
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px; /* réduit l’espace entre les images */
+  justify-content:center;
+  transition:.3s;
+}
+.gallery.two-cols .gallery-item{
+  width:calc(50% - 8px);
+  aspect-ratio:1 / 1;
+  border-radius:15px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:0 4px 12px rgba(0,0,0,.15);
+  cursor:pointer;
+  transition:transform .3s;
+}
+
 
     .gallery-item{
       width:100%;
@@ -67,7 +78,7 @@
     .gallery-item:hover img{transform:scale(1.05)}
 
     .gallery.two-cols .gallery-item{
-      width:calc(50% - 8px);
+      width:calc(50% - 10px);
     }
 
     .gallery.one-col .gallery-item{
@@ -76,64 +87,64 @@
 
     @media(min-width:768px){
       .gallery.two-cols .gallery-item{
-        width:calc(33.33% - 10.67px);
+        width:calc(33.33% - 13.33px);
       }
     }
 
-    /* Bouton toggle fixe à droite, rond, sans texte */
     .toggle-container{
-      position:fixed;
-      top:100px;
-      right:15px;
-      z-index:1100;
-      background:rgba(0,0,0,.75);
-      color:#fff;
-      width:48px;
-      height:48px;
-      border-radius:50%;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      cursor:pointer;
-      user-select:none;
-      box-shadow:0 3px 10px rgba(0,0,0,.4);
-      transition:background .3s,color .3s;
-      font-size:1.6rem;
-    }
-    .toggle-container:hover{
-      background:rgba(0,0,0,.9);
-      color:#f8bbd0;
-    }
-    @media(min-width:601px){
-      .toggle-container{
-        display:none;
-      }
-    }
+  position: fixed;
+  bottom: 110px;  /* juste au-dessus du bouton + */
+  right: 15px;
+  z-index: 1100;
+  background: rgba(0,0,0,.75);
+  color: #fff;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 3px 10px rgba(0,0,0,.4);
+  transition: background .3s,color .3s;
+  font-size: 1.6rem;
+}
+.toggle-container:hover{
+  background: rgba(0,0,0,.9);
+  color: #f8bbd0;
+}
+@media(min-width:601px){
+  .toggle-container{
+    display:none;
+  }
+}
 
-    /* Bouton ajouter fixe, rond, icône uniquement, en bas à droite */
-    .upload-button{
-      position:fixed;
-      bottom:40px;
-      right:15px;
-      z-index:1100;
-      background:rgba(0,0,0,.85);
-      color:#fff;
-      width:56px;
-      height:56px;
-      border-radius:50%;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      font-weight:700;
-      font-size:1.8rem;
-      cursor:pointer;
-      user-select:none;
-      box-shadow:0 3px 10px rgba(0,0,0,.5);
-      transition:background .3s;
-    }
-    .upload-button:hover{
-      background:#000;
-    }
+
+   .upload-button{
+  position:fixed;
+  bottom:40px;
+  right:15px;
+  z-index:1100;
+  background:rgba(0,0,0,.85);
+  color:#fff;
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-weight:700;
+  font-size:1.8rem;
+  cursor:pointer;
+  user-select:none;
+  box-shadow:0 3px 10px rgba(0,0,0,.5);
+  transition:background .3s;
+}
+.upload-button:hover{
+  background:#000;
+}
+
 
     #lightbox{position:fixed;inset:0;display:flex;justify-content:center;align-items:center;background:rgba(0,0,0,.8);visibility:hidden;opacity:0;transition:.3s;z-index:9999}
     #lightbox.active{visibility:visible;opacity:1}
@@ -147,7 +158,7 @@
     #uploadModal{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;justify-content:center;align-items:center;z-index:12000}
     #uploadModal.active{display:flex}
     .modal-content{background:rgba(255,250,244,.95);padding:25px;border-radius:15px;width:90%;max-width:400px;box-shadow:0 5px 15px rgba(0,0,0,.3);text-align:center;position:relative;color:#333}
-    .modal-content h2{color:#000;margin-bottom:20px;font-size:1.8rem}
+    .modal-content h2{color:#efb2c1;margin-bottom:20px;font-size:1.8rem}
     .modal-content input[type="file"]{display:none}
     .upload-label{display:inline-block;background:#efb2c1;color:#fff;padding:10px 25px;border-radius:50px;cursor:pointer;font-weight:700;margin-bottom:15px;transition:background .3s}
     .upload-label:hover{background:#e39fb0}
@@ -174,8 +185,8 @@
 <body>
   <nav>Eva & Sacha</nav>
 
-  <div class="toggle-container" id="toggleBtn" title="Changer le nombre de colonnes">
-    <i class="fa-solid fa-grip-vertical"></i>
+  <div class="toggle-container" id="toggleBtn">
+    <i class="fa-solid fa-grip-vertical"></i><span></span>
   </div>
 
   <div class="container">
@@ -183,21 +194,21 @@
     <div id="loader"></div>
   </div>
 
-  <div id="lightbox" aria-hidden="true">
+  <div id="lightbox">
     <button class="close-btn" title="Fermer">&times;</button>
     <img src="" alt="Agrandissement" />
   </div>
 
-  <div class="upload-button" id="openUploadModal" title="Ajouter une image"><i class="fa-solid fa-plus"></i></div>
+<div class="upload-button" id="openUploadModal" title="Ajouter une image"><i class="fa-solid fa-plus"></i></div>
 
   <div id="uploadModal" aria-hidden="true">
     <div class="modal-content">
       <button class="close-modal" title="Fermer">&times;</button>
-      <h2>Ajouter une image</h2>
+      <h2 style="color:#000">Ajouter une image</h2>
 
       <label class="upload-label" for="fileInput">Choisir une photo</label>
-      <input type="file" id="fileInput" accept="image/*" />
-      <img id="previewImg" class="preview" alt="Aperçu" />
+      <input type="file" id="fileInput" accept="image/*"/>
+      <img id="previewImg" class="preview" alt="Aperçu"/>
       <p class="status" id="modalStatus"></p>
       <button class="share-btn" id="shareBtn" disabled>Partager</button>
 
@@ -258,7 +269,7 @@
       twoCols=!twoCols;
       gallery.classList.toggle("one-col",!twoCols);
       gallery.classList.toggle("two-cols",twoCols);
-      // Pas de texte dans le toggle, juste l’icône
+      toggleBtn.querySelector("span").textContent=twoCols?"":"";
     });
 
     openModal.addEventListener("click",openUploadModal);
@@ -272,56 +283,41 @@
 
     fileInput.addEventListener("change",()=>{
       const file=fileInput.files[0];
-      if(!file)return;
-      if(!file.type.startsWith("image/")){
-        modalStatus.textContent="Le fichier doit être une image.";
-        shareBtn.disabled=true;
-        previewImg.style.display="none";
-        previewImg.src="";
-        return;
-      }
-      const reader=new FileReader();
-      reader.onload=()=>{previewImg.src=reader.result;previewImg.style.display="block";modalStatus.textContent="";shareBtn.disabled=false;}
-      reader.readAsDataURL(file);
+      if(!file){resetModal();return;}
+      if(!file.type.startsWith("image/")){modalStatus.textContent="❌ Fichier non supporté";fileInput.value="";return;}
+      const rd=new FileReader();
+      rd.onload=e=>{previewImg.src=e.target.result;previewImg.style.display="block";shareBtn.disabled=false;};
+      rd.readAsDataURL(file);
     });
 
     shareBtn.addEventListener("click",async()=>{
-      if(shareBtn.disabled)return;
-      modalLoader.style.display="flex";
-      shareBtn.disabled=true;
-      modalStatus.textContent="";
       const file=fileInput.files[0];
-      if(!file)return;
-      try{
-        const base64=await toBase64(file);
-        const res=await fetch(POST_IMAGE_URL,{
-          method:"POST",
-          headers:{"Content-Type":"application/json"},
-          body:JSON.stringify({image:base64})
-        });
-        const data=await res.json();
-        if(data.success){
-          modalStatus.textContent="Image partagée avec succès !";
-          addImage(data.url,false);
-          setTimeout(closeUploadModal,1500);
-        } else {
-          modalStatus.textContent="Erreur lors de l'envoi.";
-          shareBtn.disabled=false;
-        }
-      }catch(e){
-        modalStatus.textContent="Erreur lors de l'envoi.";
+      if(!file){modalStatus.textContent="❌ Sélectionnez une image";return;}
+      shareBtn.disabled=true;modalStatus.textContent="";modalLoader.style.display="flex";
+      const ok=await uploadFile(file);
+      modalLoader.style.display="none";
+      if(ok){
+        modalStatus.textContent="✅ Image envoyée !";
+        addImage(previewImg.src,false);
+        setTimeout(closeUploadModal,1500);
+      }else{
+        modalStatus.textContent="❌ Erreur lors de l'envoi";
         shareBtn.disabled=false;
-      } finally {
-        modalLoader.style.display="none";
       }
     });
 
-    function toBase64(file){
-      return new Promise((resolve,reject)=>{
-        const reader=new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload=()=>resolve(reader.result);
-        reader.onerror=error=>reject(error);
+    async function uploadFile(file){
+      return new Promise(res=>{
+        const rd=new FileReader();
+        rd.onloadend=async()=>{
+          const base64=rd.result.split(",")[1];
+          const body=new URLSearchParams({file:base64,fileName:file.name,mimeType:file.type});
+          try{
+            const r=await fetch(POST_IMAGE_URL,{method:"POST",body,headers:{"Content-Type":"application/x-www-form-urlencoded"}});
+            const txt=await r.text();console.log("Serveur:",txt);res(txt.includes("Fichier uploadé"));
+          }catch(e){console.error(e);res(false);}
+        };
+        rd.readAsDataURL(file);
       });
     }
 
